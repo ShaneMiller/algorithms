@@ -1,3 +1,9 @@
+package com;
+
+import org.apache.log4j.Logger;
+
+import java.util.Collection;
+
 /**
  * Chapter 12 Binary Search Trees - Introduction to Algorithms 2nd Edition.
  *
@@ -6,6 +12,8 @@
  * @param <T> The BinarySearchTree.Node key is of type T
  */
 public class BinarySearchTree<T extends Comparable<T>> {
+
+    public Logger log = Logger.getLogger(BinarySearchTree.class);
 
     private Node<T> root;
 
@@ -17,6 +25,12 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     public BinarySearchTree(T rootKey) {
         this.root = new Node<T>(rootKey);
+    }
+
+    public BinarySearchTree(Collection<T> keys) {
+        for(T key : keys) {
+            insert(key);
+        }
     }
 
     public void insert(T key) {
@@ -83,7 +97,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
     public void inOrderWalk(Node node) {
         if(node != null) {
             inOrderWalk(node.left);
-            System.out.println(node.key.toString());
+            log.info(node.key);
             inOrderWalk(node.right);
         }
     }
