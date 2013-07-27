@@ -1,4 +1,4 @@
-package com;
+package datastructures.tree.binarytree;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
